@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch Fabonacci",
+            "type": "gdb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/math/fibonacci_fast"
+        },
+        // start with "gdbserver with randomly assigned port fibonacci_fast"
+        {
+            "name": "(gdb) Launch and Attach Remote Target Fabonacci",
+            "type": "gdbtarget",
+            "request": "lauch",
+            "program": "${workspaceFolder}/build/math/fibonacci_fast",
+        },
+        // on remote/target
+        // start on program $ gdbserver localhost:3000 fibonacci_fast
+        // attach to running process $ gdbserver --attach localhost:3000 $(pidof fibonacci_fast)
+        {
+            "name": "(gdb) Attach Process on Remote Target Fabonacci",
+            "type": "gdbtarget",
+            "request": "attach",
+            "program": "${workspaceFolder}/build/math/fibonacci_fast",
+            "target": {
+                "type": "remote",
+                "port": 3000,
+                "host": "localhost"
+            }
+        }
+    ]
+}

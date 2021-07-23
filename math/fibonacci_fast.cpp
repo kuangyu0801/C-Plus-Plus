@@ -14,6 +14,7 @@
  * \author [Krishna Vedala](https://github.com/kvedala)
  * @see fibonacci_large.cpp, fibonacci.cpp, string_fibonacci.cpp
  */
+#include <unistd.h>
 
 #include <cinttypes>
 #include <cstdio>
@@ -50,7 +51,10 @@ uint64_t fib(uint64_t n) {
 /** Main function */
 int main() {
     // Main Function
+    std::cout << "DEBUG: accessfile() called by process " << ::getpid()
+              << " (parent: " << ::getppid() << ")" << std::endl;
     for (uint64_t i = 1; i < 93; i++) {
+        sleep(1);
         std::cout << i << " th fibonacci number is " << fib(i) << std::endl;
     }
     return 0;
